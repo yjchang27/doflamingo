@@ -5,6 +5,7 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
+
 Ext.define('doflamingo.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
@@ -83,18 +84,20 @@ Ext.define('doflamingo.view.main.Main', {
             xtype: 'mainlist'
         }]
     }, {
-        title: 'Users',
+        title: 'Kafka',
         iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
+        items: [{
+            xtype: 'basic-tabs'
+        }]
+
+        
+    }, /*{
         title: 'Groups',
         iconCls: 'fa-users',
         bind: {
             html: '{loremIpsum}'
         }
-    }, {
+    }, */{
         title: 'Settings',
         iconCls: 'fa-cog',
         bind: {

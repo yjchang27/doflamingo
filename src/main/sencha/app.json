@@ -65,6 +65,7 @@
      *      ]
      */
     "requires": [
+        "charts",
         "font-awesome"
     ],
 
