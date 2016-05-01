@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.doflamingo.test</groupId>
+    <artifactId>doflamingo</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>doflamingo</name>
+
+    <properties>
+        <!-- Project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <output.encoding>UTF-8</output.encoding>
+        <!-- Spring Framework -->
+        <spring.version>4.1.9.RELEASE</spring.version>
+        <!-- Logging -->
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>sencha-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Set path to your Sencha Cmd executable-->
+                            <executable>sencha</executable>
+                            <arguments>
+                                <argument>ant</argument>
+                                <argument>--file</argument>
+                                <argument>${basedir}/src/main/sencha/build.xml</argument>
+                                <argument>--target</argument>
+                                <argument>Build - Production</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>default-war</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                        <configuration>
+                            <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>otf</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                    <resourceEncoding>UTF-8</resourceEncoding>
+                    <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                    <webResources>
+                        <resource>
+                            <directory>${basedir}/src/main/webapp/WEB-INF</directory>
+                            <filtering>true</filtering>
+                            <targetPath>WEB-INF</targetPath>
+                            <includes>
+                                <include>version.properties</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>${basedir}/src/main/sencha/build/production/doflamingo
+                            </directory>
+                            <filtering>true</filtering>
+                            <targetPath>resources</targetPath>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
