@@ -83,7 +83,6 @@
                             <directory>${basedir}/src/main/sencha/build/production/doflamingo
                             </directory>
                             <filtering>true</filtering>
-                            <targetPath>resources</targetPath>
                         </resource>
                     </webResources>
                 </configuration>
