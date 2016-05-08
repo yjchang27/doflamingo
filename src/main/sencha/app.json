@@ -222,6 +222,10 @@
         {
             "path": "app.js",
             "bundle": true
+        },
+        {
+            "path": "resources/js/d3.min.js",
+            "bundle": false
         }
     ],
 
