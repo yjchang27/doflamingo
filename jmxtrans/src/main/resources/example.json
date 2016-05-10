@@ -1,0 +1,14 @@
+{
+  "servers" : [ {
+    "port" : "9999",
+    "host" : "192.168.99.100",
+    "queries" : [ {
+      "outputWriters" : [ {
+        "@class" : "com.googlecode.jmxtrans.model.output.StdOutWriter"
+      } ],
+      "obj" : "kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec,topic=fast-messages",
+      "attr" : [ "Count" ]
+    } ],
+    "numQueryThreads" : 2
+  } ]
+}

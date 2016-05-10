@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.doflamingo</groupId>
+        <artifactId>doflamingo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>jmxtrans</artifactId>
+
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>jmxtrans</name>
+
+    <properties>
+        <!-- Project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <output.encoding>UTF-8</output.encoding>
+        <!-- jmxtrans -->
+        <jmxtrans.version>254</jmxtrans.version>
+        <slf4j.version>1.7.21</slf4j.version>
+    </properties>
+
+    <build></build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jmxtrans</groupId>
+            <artifactId>jmxtrans-core</artifactId>
+            <version>${jmxtrans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmxtrans</groupId>
+            <artifactId>jmxtrans-output-core</artifactId>
+            <version>${jmxtrans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmxtrans</groupId>
+            <artifactId>jmxtrans-utils</artifactId>
+            <version>${jmxtrans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

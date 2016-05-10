@@ -22,11 +22,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="doflamingo" />
+        <module name="server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="doflamingo" target="1.5" />
+      <module name="jmxtrans" target="1.5" />
+      <module name="server" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
