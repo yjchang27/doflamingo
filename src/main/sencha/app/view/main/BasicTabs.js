@@ -19,11 +19,11 @@ Ext.define('doflamingo.view.main.BasicTabs', {
         title: 'Overview',
         xtype: 'mainCharts'
     }, {
-        title: 'History',
-        xtype: 'mainlist'
+        title: 'Heap Memory Usage',
+        xtype: 'heapContainer'
     }, {
-        title: 'Disabled Tab',
-        disabled: true
+        title: 'Message Condition',
+        xtype: 'messageConditionContainer'
     }],
 
     listeners: {

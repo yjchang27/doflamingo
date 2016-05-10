@@ -6,6 +6,41 @@
  * TODO - Replace this content of this view to suite the needs of your application.
  */
 
+
+/* Inspired by Lee Byron's test data generator. */
+function stream_layers(n, m, o) {
+    if (arguments.length < 3) o = 0;
+    function bump(a) {
+        var x = 1 / (.1 + Math.random()),
+            y = 2 * Math.random() - .5,
+            z = 10 / (.1 + Math.random());
+        for (var i = 0; i < m; i++) {
+            var w = (i / m - y) * z;
+            a[i] += x * Math.exp(-w * w);
+        }
+    }
+    return d3.range(n).map(function() {
+        var a = [], i;
+        for (i = 0; i < m; i++) a[i] = o + o * Math.random();
+        for (i = 0; i < 5; i++) bump(a);
+        return a.map(stream_index);
+    });
+}
+
+function stream_index(d, i) {
+    return {x: i, y: Math.max(0, d)};
+}
+
+function testData(a) {
+    return stream_layers(a.length, 128, .1).map(function(data, i) {
+        return {
+            key: a[i],
+            area: i < 0,
+            values: data
+        };
+    });
+}
+
 Ext.define('doflamingo.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
@@ -14,9 +49,11 @@ Ext.define('doflamingo.view.main.Main', {
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
 
+        'Ext.ux.WebSocket',
+        'Ext.ux.WebSocketManager',
+
         'doflamingo.view.main.MainController',
-        'doflamingo.view.main.MainModel',
-        'doflamingo.view.main.List'
+        'doflamingo.view.main.MainModel'
     ],
 
     controller: 'main',
@@ -81,7 +118,7 @@ Ext.define('doflamingo.view.main.Main', {
         iconCls: 'fa-home',
         // The following grid shares a store with the classic version's grid as well!
         items: [{
-            xtype: 'mainlist'
+            xtype: 'basic-tabs'
         }]
     }, {
         title: 'Kafka',
@@ -89,7 +126,6 @@ Ext.define('doflamingo.view.main.Main', {
         items: [{
             xtype: 'basic-tabs'
         }]
-
         
     }, /*{
         title: 'Groups',
@@ -100,8 +136,8 @@ Ext.define('doflamingo.view.main.Main', {
     }, */{
         title: 'Settings',
         iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        items: [{
+            xtype: 'heapContainer'
+        }]
     }]
 });

@@ -3,26 +3,19 @@
  */
 
 
-Ext.define('doflamingo.view.main.MainCharts', {
+Ext.define('doflamingo.view.heap_memory.HeapContainer', {
     extend: 'Ext.Container',
-    xtype: 'mainCharts',
+    xtype: 'heapContainer',
     layout: {
         type: 'column',
         columns: 3,
         tdAttrs: { style: 'padding: 20px;'}
     },
     items: [{
-        xtype: 'heapChart',
-        height: 300,
-        columnWidth: 0.334
-    }, {
-        xtype: 'messageConditionChart',
-        height: 300,
-        columnWidth: 0.334
-    }, {
-        xtype: 'responseChart',
-        height: 300,
-        columnWidth: 0.333
+        xtype: 'heapTimeline',
+        dataUrl: '../../resources/',
+        height: 400,
+        columnWidth: 1
     }, {
         xtype: 'fetchRateChart',
         height: 300,
@@ -30,7 +23,7 @@ Ext.define('doflamingo.view.main.MainCharts', {
     }, {
         xtype: 'messageConsumedChart',
         height: 300,
-        columnWidth: 0.334
+        columnWidth: 0.333
     }, {
         xtype: 'maxLagChart',
         height: 300,

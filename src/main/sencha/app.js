@@ -3,6 +3,7 @@
  * needed for your application, but these edits will have to be merged by
  * Sencha Cmd when upgrading.
  */
+/*
 var childPanel1 = Ext.create('Ext.panel.Panel', {
     title: 'Child Panel 1',
     html: 'A Panel'
@@ -11,6 +12,7 @@ var childPanel2 = Ext.create('Ext.panel.Panel', {
     title: 'Child Panel 2',
     html: 'Another Panel'
 });
+*/
 /*
 Ext.application({
     name: 'doflamingo',
@@ -24,6 +26,7 @@ Ext.application({
     }
 });
 */
+
 
 Ext.application({
     name: 'doflamingo',
