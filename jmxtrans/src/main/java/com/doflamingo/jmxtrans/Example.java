@@ -14,15 +14,14 @@ import java.io.File;
  */
 public class Example {
 
-    private static final String KAFKA_HOST = "192.168.99.100";
-    private static final String KAFKA_JMX_PORT = "9999";
-
     public static void main(String[] args) throws Exception {
 
         Injector injector = JmxTransModule.createInjector(new JmxTransConfiguration());
         JsonUtils jsonUtils = injector.getInstance(JsonUtils.class);
 
-        JmxProcess process = jsonUtils.parseProcess(new File("example.json"));
+        JmxProcess process = jsonUtils.parseProcess(
+                new File(Example.class.getClassLoader().getResource("example.json").getFile())
+        );
 
         JmxTransformer transformer = injector.getInstance(JmxTransformer.class);
         transformer.executeStandalone(process);
