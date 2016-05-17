@@ -16,7 +16,9 @@ public class Example {
 
     public static void main(String[] args) throws Exception {
 
-        Injector injector = JmxTransModule.createInjector(new JmxTransConfiguration());
+        JmxTransConfiguration configuration = new JmxTransConfiguration();
+        configuration.setRunPeriod(1);
+        Injector injector = JmxTransModule.createInjector(configuration);
         JsonUtils jsonUtils = injector.getInstance(JsonUtils.class);
 
         JmxProcess process = jsonUtils.parseProcess(
