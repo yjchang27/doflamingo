@@ -24,4 +24,11 @@
 
   <!-- Parse property file when starting the server -->
   <context:property-placeholder location="/WEB-INF/doflamingo.properties" />
+
+  <websocket:handlers>
+    <websocket:mapping handler="websocketHandler" path="/websocket">
+    </websocket:mapping></websocket:handlers>
+
+  <bean id="websocketHandler" class="com.doflamingo.server.websocket" />
+
 </beans>

@@ -41,6 +41,7 @@ function testData(a) {
     });
 }
 
+
 Ext.define('doflamingo.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',

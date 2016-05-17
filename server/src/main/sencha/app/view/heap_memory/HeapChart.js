@@ -38,6 +38,7 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
             resize:function(me){
                 me.refreshSize(me,this.getSize().width,this.getSize().height);
             }
+
         });
 
         Ext.applyIf(this,{
@@ -94,6 +95,7 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
 
             // Int by default see https://github.com/mbostock/d3/wiki/Formatting for
             // adding additional formats
+            
 
             var selector = "#" + me.getId().toString() + " heapChart svg";
 
@@ -116,9 +118,9 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
                 .tickFormat(d3.format(',.2f'));
             chart.useInteractiveGuideline(true);
 
-            d3.select(selector)
-                .datum(testData(['Heap Memory Usage']))
-                .call(chart);
+            //d3.select(selector)
+            //    .datum(testData(['Heap Memory Usage']))
+            //    .call(chart);
 
             d3.selectAll("#" + me.getId().toString() + " heapChart svg .nv-bar")
                 .on('click', function (d) {
@@ -128,6 +130,30 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
             if(!me.showSeriesLegend){
                 d3.select("#" + me.getId().toString() + " heapChart svg .nv-legendWrap").remove();
             }
+
+            var ws1 = Ext.create ('Ext.ux.WebSocket', {
+                url: 'ws://localhost:8080/api/websocket'
+            });
+
+            Ext.ux.WebSocketManager.register (ws1);
+
+            Ext.ux.WebSocketManager.listen ('system shutdown', function (ws, data) {
+                d3.select(selector)
+                    .datum(testData(['Heap Memory']))
+                    .call(chart);
+                Ext.Msg.show ({
+                    title: 'System Shutdown' ,
+                    msg: data ,
+                    icon: Ext.Msg.WARNING ,
+                    buttons: Ext.Msg.OK
+                });
+            });
+
+            var playAlert = setInterval(function() {
+                Ext.ux.WebSocketManager.broadcast ('system shutdown', 'BROADCAST: the system will shutdown in few minutes.');
+            }, 3000);
+            //Ext.ux.WebSocketManager.closeAll ();
+            //Ext.ux.WebSocketManager.unregister (ws1);
         }
     }
 });
