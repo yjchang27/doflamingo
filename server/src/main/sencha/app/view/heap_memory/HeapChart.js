@@ -132,7 +132,7 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
             }
 
             var ws1 = Ext.create ('Ext.ux.WebSocket', {
-                url: 'ws://localhost:8080/api/websocket'
+                url: 'ws://localhost:8080/api/ws'
             });
 
             Ext.ux.WebSocketManager.register (ws1);
@@ -150,8 +150,11 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
             });
 
             var playAlert = setInterval(function() {
-                Ext.ux.WebSocketManager.broadcast ('system shutdown', 'BROADCAST: the system will shutdown in few minutes.');
-            }, 3000);
+                d3.select(selector)
+                    .datum(testData(['Heap Memory']))
+                    .call(chart);
+                //Ext.ux.WebSocketManager.broadcast ('system shutdown', 'BROADCAST: the system will shutdown in few minutes.');
+            }, 1000);
             //Ext.ux.WebSocketManager.closeAll ();
             //Ext.ux.WebSocketManager.unregister (ws1);
         }

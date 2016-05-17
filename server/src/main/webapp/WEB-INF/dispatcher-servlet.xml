@@ -2,18 +2,18 @@
   xmlns:context="http://www.springframework.org/schema/context"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:websocket="http://www.springframework.org/schema/websocket"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-4.0.xsd
-    http://www.springframework.org/schema/util
-    http://www.springframework.org/schema/util/spring-util.xsd">
+    http://www.springframework.org/schema/websocket
+    http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
   <!-- Auto-load Controllers located at com.doflamingo.test.* -->
-  <context:component-scan base-package="com.doflamingo.test" />
+  <context:component-scan base-package="com.doflamingo.server" />
   <mvc:annotation-driven />
 
   <!-- Views are located at /WEB-INF/views/*.jsp -->
@@ -26,9 +26,9 @@
   <context:property-placeholder location="/WEB-INF/doflamingo.properties" />
 
   <websocket:handlers>
-    <websocket:mapping handler="websocketHandler" path="/websocket">
-    </websocket:mapping></websocket:handlers>
+    <websocket:mapping path="/ws" handler="webSocketHandler"/>
+  </websocket:handlers>
 
-  <bean id="websocketHandler" class="com.doflamingo.server.websocket" />
+  <bean id="webSocketHandler" class="com.doflamingo.server.WebSocketHandler"/>
 
 </beans>
