@@ -9,7 +9,7 @@ Ext.define('doflamingo.view.main.MainModel', {
     data: {
         name: 'doflamingo',
 
-        loremIpsum: 'Home Sweet Home.'
+        loremIpsum: '<h1>Home Sweet Home.</h1>'
     }
 
     //TODO - add data, formulas and/or methods to support your view
