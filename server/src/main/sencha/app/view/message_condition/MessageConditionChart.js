@@ -116,18 +116,27 @@ Ext.define('doflamingo.view.message_condition.MessageConditionChart', {
                 .tickFormat(d3.format(',.2f'));
             chart.useInteractiveGuideline(true);
 
-            d3.select(selector)
-                .datum(testData(['request', 'msg in']))
-                .call(chart);
+            //d3.select(selector)
+            //   .datum(testData(['request', 'msg in']))
+            //    .call(chart);
 
-            d3.selectAll("#" + me.getId().toString() + " messageConditionChart svg .nv-bar")
-                .on('click', function (d) {
-                    me.onChartClick(d);
-                });
+            var jsons = testData(['request', 'msg in']);
+            var j = 0;
+            var playAlert = setInterval(function() {
+                d3.select(selector)
+                    .datum(shiftData(jsons, j++))
+                    .call(chart);
 
-            if(!me.showSeriesLegend){
-                d3.select("#" + me.getId().toString() + " messageConditionChart svg .nv-legendWrap").remove();
-            }
+                d3.selectAll("#" + me.getId().toString() + " messageConditionChart svg .nv-bar")
+                    .on('click', function (d) {
+                        me.onChartClick(d);
+                    });
+
+                if(!me.showSeriesLegend){
+                    d3.select("#" + me.getId().toString() + " messageConditionChart svg .nv-legendWrap").remove();
+                }
+                //Ext.ux.WebSocketManager.broadcast ('system shutdown', 'BROADCAST: the system will shutdown in few minutes.');
+            }, 500);
         }
     }
 });

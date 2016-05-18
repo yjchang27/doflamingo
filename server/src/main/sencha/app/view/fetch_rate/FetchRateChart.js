@@ -115,19 +115,24 @@ Ext.define('doflamingo.view.fetch_rate.FetchRateChart', {
                 .axisLabel('(%)')
                 .tickFormat(d3.format(',.2f'));
             chart.useInteractiveGuideline(true);
+            
+            var jsons = testData(['Minimum Fetch Rate']);
+            var j = 0;
+            var playAlert = setInterval(function() {
+                d3.select(selector)
+                    .datum(shiftData(jsons, j++))
+                    .call(chart);
 
-            d3.select(selector)
-                .datum(testData(['Minimum Fetch Rate']))
-                .call(chart);
+                d3.selectAll("#" + me.getId().toString() + " fetchRateChart svg .nv-bar")
+                    .on('click', function (d) {
+                        me.onChartClick(d);
+                    });
 
-            d3.selectAll("#" + me.getId().toString() + " fetchRateChart svg .nv-bar")
-                .on('click', function (d) {
-                    me.onChartClick(d);
-                });
-
-            if(!me.showSeriesLegend){
-                d3.select("#" + me.getId().toString() + " fetchRateChart svg .nv-legendWrap").remove();
-            }
+                if(!me.showSeriesLegend){
+                    d3.select("#" + me.getId().toString() + " fetchRateChart svg .nv-legendWrap").remove();
+                }
+                //Ext.ux.WebSocketManager.broadcast ('system shutdown', 'BROADCAST: the system will shutdown in few minutes.');
+            }, 500);
         }
     }
 });

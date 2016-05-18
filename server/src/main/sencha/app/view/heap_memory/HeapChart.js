@@ -122,14 +122,6 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
             //    .datum(testData(['Heap Memory Usage']))
             //    .call(chart);
 
-            d3.selectAll("#" + me.getId().toString() + " heapChart svg .nv-bar")
-                .on('click', function (d) {
-                    me.onChartClick(d);
-                });
-
-            if(!me.showSeriesLegend){
-                d3.select("#" + me.getId().toString() + " heapChart svg .nv-legendWrap").remove();
-            }
 
             var ws1 = Ext.create ('Ext.ux.WebSocket', {
                 url: 'ws://localhost:8080/api/ws'
@@ -148,13 +140,23 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
                     buttons: Ext.Msg.OK
                 });
             });
-
+            var jsons = testData(['Heap Memory']);
+            var j = 0;
             var playAlert = setInterval(function() {
                 d3.select(selector)
-                    .datum(testData(['Heap Memory']))
+                    .datum(shiftData(jsons, j++))
                     .call(chart);
+
+                d3.selectAll("#" + me.getId().toString() + " heapChart svg .nv-bar")
+                    .on('click', function (d) {
+                        me.onChartClick(d);
+                    });
+
+                if(!me.showSeriesLegend){
+                    d3.select("#" + me.getId().toString() + " heapChart svg .nv-legendWrap").remove();
+                }
                 //Ext.ux.WebSocketManager.broadcast ('system shutdown', 'BROADCAST: the system will shutdown in few minutes.');
-            }, 1000);
+            }, 500);
             //Ext.ux.WebSocketManager.closeAll ();
             //Ext.ux.WebSocketManager.unregister (ws1);
         }

@@ -32,11 +32,20 @@ function stream_index(d, i) {
 }
 
 function testData(a) {
-    return stream_layers(a.length, 128, .1).map(function(data, i) {
+    return stream_layers(a.length, 512, .1).map(function(data, i) {
         return {
             key: a[i],
             area: i < 0,
             values: data
+        };
+    });
+}
+
+function shiftData(jsons, i) {
+    return jsons.map(function(json) {
+        return {
+            key: json.key,
+            values: json.values.slice(i, i + 256)
         };
     });
 }
@@ -118,9 +127,9 @@ Ext.define('doflamingo.view.main.Main', {
         title: 'Home',
         iconCls: 'fa-home',
         // The following grid shares a store with the classic version's grid as well!
-        items: [{
-            xtype: 'basic-tabs'
-        }]
+        bind: {
+            html: '{loremIpsum}'
+        }
     }, {
         title: 'Kafka',
         iconCls: 'fa-user',
