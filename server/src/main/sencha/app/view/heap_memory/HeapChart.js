@@ -95,7 +95,7 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
 
             // Int by default see https://github.com/mbostock/d3/wiki/Formatting for
             // adding additional formats
-            
+
 
             var selector = "#" + me.getId().toString() + " heapChart svg";
 
@@ -123,42 +123,51 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
             //    .call(chart);
 
 
-            var ws1 = Ext.create ('Ext.ux.WebSocket', {
-                url: 'ws://localhost:8080/api/ws'
+            var websocket = Ext.create ('Ext.ux.WebSocket', {
+                url: 'ws://localhost:8080/api/ws' ,
+                listeners: {
+                    open: function (ws) {
+                        console.log ('The websocket is ready to use');
+                        ws.send ('init', 'This is a simple text');
+                        ws.send ('and continue', {
+                            'my': 'data' ,
+                            'your': 'data'
+                        });
+                    } ,
+                    close: function (ws) {
+                        console.log ('The websocket is closed!');
+                    },
+                    message: function (ws, message) {
+                        // Here shifting implementation
+                        console.log ('A new message is arrived: ' + message);
+                    }
+                }
             });
 
-            Ext.ux.WebSocketManager.register (ws1);
-
-            Ext.ux.WebSocketManager.listen ('system shutdown', function (ws, data) {
-                d3.select(selector)
-                    .datum(testData(['Heap Memory']))
-                    .call(chart);
-                Ext.Msg.show ({
-                    title: 'System Shutdown' ,
-                    msg: data ,
-                    icon: Ext.Msg.WARNING ,
-                    buttons: Ext.Msg.OK
-                });
+            websocket.on ('stop', function (data) {
+                console.log ('Command: ' + data.cmd);
+                console.log ('Message: ' + data.msg);
             });
             var jsons = testData(['Heap Memory']);
-            var j = 0;
-            var playAlert = setInterval(function() {
+            var time = 0;
+            var playAlert = setInterval(function () {
                 d3.select(selector)
-                    .datum(shiftData(jsons, j++))
+                    .datum(shiftData(jsons, time++))
                     .call(chart);
-
+                //var a3 = shiftData(jsons, j)[0].values.slice(125, 128);
+                //var db = a3[2].y - 2 * a3[1].y + a3[0].y;
+                //console.log(db);
                 d3.selectAll("#" + me.getId().toString() + " heapChart svg .nv-bar")
                     .on('click', function (d) {
                         me.onChartClick(d);
                     });
 
-                if(!me.showSeriesLegend){
+                if (!me.showSeriesLegend) {
                     d3.select("#" + me.getId().toString() + " heapChart svg .nv-legendWrap").remove();
                 }
-                //Ext.ux.WebSocketManager.broadcast ('system shutdown', 'BROADCAST: the system will shutdown in few minutes.');
+
+
             }, 500);
-            //Ext.ux.WebSocketManager.closeAll ();
-            //Ext.ux.WebSocketManager.unregister (ws1);
         }
     }
 });

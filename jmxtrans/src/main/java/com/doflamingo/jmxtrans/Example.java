@@ -27,6 +27,8 @@ public class Example {
 
         JmxTransformer transformer = injector.getInstance(JmxTransformer.class);
         transformer.executeStandalone(process);
+
     }
 
 }
+
