@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jmxtrans:war">
+    <output-path>$PROJECT_DIR$/jmxtrans/target</output-path>
+    <root id="archive" name="jmxtrans-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="jmxtrans:war exploded" />
+    </root>
+  </artifact>
+</component>

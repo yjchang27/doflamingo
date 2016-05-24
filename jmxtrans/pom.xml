@@ -11,7 +11,7 @@
 
     <artifactId>jmxtrans</artifactId>
 
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>jmxtrans</name>
 
@@ -20,17 +20,38 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <output.encoding>UTF-8</output.encoding>
-
-        <!-- version control -->
-        <javax.websocket.api>1.1</javax.websocket.api>
+        <!-- jmxtrans -->
         <jmxtrans.version>254</jmxtrans.version>
-        <rrd4j.version>2.2</rrd4j.version>
         <slf4j.version>1.7.21</slf4j.version>
+        <!-- rrd4j -->
+        <rrd4j.version>2.2.1</rrd4j.version>
+        <!-- Spring Framework -->
+        <spring.version>4.1.9.RELEASE</spring.version>
     </properties>
 
     <build></build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.jmxtrans</groupId>
             <artifactId>jmxtrans-core</artifactId>
@@ -62,9 +83,9 @@
             <version>${rrd4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <version>${javax.websocket.api}</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
         </dependency>
 
     </dependencies>
