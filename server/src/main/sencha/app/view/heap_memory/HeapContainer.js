@@ -13,7 +13,6 @@ Ext.define('doflamingo.view.heap_memory.HeapContainer', {
     },
     items: [{
         xtype: 'heapTimeline',
-        dataUrl: '../../resources/',
         height: 400,
         columnWidth: 1
     }, {

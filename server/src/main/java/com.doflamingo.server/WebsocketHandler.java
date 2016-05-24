@@ -8,6 +8,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        session.sendMessage(new TextMessage("ECHO : " + message.getPayload()));
+        session.sendMessage(new TextMessage(message.getPayload()));
     }
 }
