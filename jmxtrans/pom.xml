@@ -20,8 +20,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <output.encoding>UTF-8</output.encoding>
-        <!-- jmxtrans -->
+
+        <!-- version control -->
+        <javax.websocket.api>1.1</javax.websocket.api>
         <jmxtrans.version>254</jmxtrans.version>
+        <rrd4j.version>2.2</rrd4j.version>
         <slf4j.version>1.7.21</slf4j.version>
     </properties>
 
@@ -54,15 +57,14 @@
             <version>${slf4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
+            <groupId>org.rrd4j</groupId>
+            <artifactId>rrd4j</artifactId>
+            <version>${rrd4j.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.websocket</groupId>
             <artifactId>javax.websocket-api</artifactId>
-            <version>1.1</version>
+            <version>${javax.websocket.api}</version>
         </dependency>
 
     </dependencies>
