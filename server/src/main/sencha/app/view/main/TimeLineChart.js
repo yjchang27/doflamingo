@@ -52,7 +52,7 @@ Ext.define('doflamingo.view.main.TimeLineChart', {
         var chart = nv.models.lineWithFocusChart();
         chart.brushExtent([50, 70]);
 
-        chart.xAxis.axisLabel('time (ms)').tickFormat(d3.format(',f'));
+        chart.xAxis.axisLabel('time (ms)').tickFormat(function(d) { return d3.time.format('%X')(new Date(d)) });
         chart.yAxis.axisLabel('(%)').tickFormat(d3.format(',.2f'));
         chart.x2Axis.tickFormat(d3.format(',f'));
         chart.y2Axis.tickFormat(d3.format(',.2f'));
@@ -63,22 +63,16 @@ Ext.define('doflamingo.view.main.TimeLineChart', {
         me.event.map(function (event) {
             jsons.push({key : event, values: []});
         });
-        for (var i = 0; i < 256; i++) {
+        for (var i = 0; i < 2048; i++) {
             jsons.map(function(json) {
-                json.values.push({x : i, y : Math.random()});
+                json.values.push({x : i, y : 100*Math.random()});
             });
         }
         var websocket = Ext.create ('Ext.ux.WebSocket', {
-            url: 'ws://localhost:8080/api/ws' ,
+            url: 'ws://localhost:8080/api/websocket',
             listeners: {
                 open: function (ws) {
                     console.log ('The websocket is ready to use');
-                    setInterval(function() {
-                        me.event.map(function (event) {
-                            ws.send(event, {x : i, y: Math.random()});
-                        });
-                        i++;
-                    }, 500)
                 } ,
                 close: function (ws) {
                     console.log ('The websocket is closed!');

@@ -51,7 +51,7 @@ Ext.define('doflamingo.view.main.LineChart', {
 
         var chart = nv.models.lineChart();
         chart.brushExtent([50, 70]); // 50, 70
-        chart.xAxis.axisLabel('time (ms)').tickFormat(d3.format(',f'));
+        chart.xAxis.axisLabel('time (ms)').tickFormat(function(d) { return d3.time.format('%X')(new Date(d)) });
         chart.yAxis.axisLabel('(%)').tickFormat(d3.format(',.2f'));
         chart.useInteractiveGuideline(true);
 
@@ -60,7 +60,7 @@ Ext.define('doflamingo.view.main.LineChart', {
         me.event.map(function (event) {
             jsons.push({key : event, values: []});
         });
-        for (var i = 0; i < 256; i++) {
+        for (var i = 0; i < 32; i++) {
             jsons.map(function(json) {
                 json.values.push({x : i, y : Math.random()});
             });
@@ -70,22 +70,21 @@ Ext.define('doflamingo.view.main.LineChart', {
             listeners: {
                 open: function (ws) {
                     console.log ('The websocket is ready to use');
-                    setInterval(function() {
-                        me.event.map(function (event) {
-                            ws.send(event, {x : i, y: Math.random()});
-                        });
-                        i++;
-                    }, 500)
                 } ,
                 close: function (ws) {
                     console.log ('The websocket is closed!');
                 },
                 message: function (ws, message) {
-                    if (me.event.includes(message.event)) {
+
+                    console.log(me.event);
+                    console.log(message.data);
+                    console.log(me.event.indexOf(message.event));
+                    if (me.event.indexOf(message.event) > -1) {
+                        console.log(message.event);
                         jsons.map(function(elem) {
                             if (message.event == elem.key) {
                                 elem.values = elem.values.slice(1);
-                                elem.values.push(message.data);    
+                                elem.values.push(message.data);
                             }
                         });
                         d3.select(selector)

@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 /**
@@ -36,13 +37,14 @@ public class WebSocketWriter extends BaseOutputWriter {
     @Override
     protected void internalWrite(Server server, Query query, ImmutableList<Result> results) throws Exception {
         WebSocketSession session = WSHandler.getInstance().getSession();
+
         for (Result r : results) {
 //            if (session != null) session.sendMessage(new TextMessage(r.toString()));
             String jsonStr = new JSONObject()
                     .put("event", "heap")
                     .put("data", new JSONObject()
                             .put("x", r.getEpoch())
-                            .put("y", r.getValues().get("used"))
+                            .put("y", 100*(float)(Long)r.getValues().get("used")/(Long)r.getValues().get("max"))
                     ).toString();
             if (session != null) session.sendMessage(new TextMessage(jsonStr));
         }

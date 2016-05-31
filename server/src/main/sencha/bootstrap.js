@@ -173,7 +173,6 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             /*
              * simple helper method for debugging
              */
-            debug: _debug,
 
             /**
              * enables / disables loading scripts via script / link elements rather

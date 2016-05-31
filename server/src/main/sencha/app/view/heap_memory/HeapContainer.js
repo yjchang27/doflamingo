@@ -15,7 +15,7 @@ Ext.define('doflamingo.view.heap_memory.HeapContainer', {
         xtype: 'heapTimeline',
         height: 400,
         columnWidth: 1
-    }, {
+    }/*, {
         xtype: 'fetchRateChart',
         height: 300,
         columnWidth: 0.334
@@ -27,5 +27,5 @@ Ext.define('doflamingo.view.heap_memory.HeapContainer', {
         xtype: 'maxLagChart',
         height: 300,
         columnWidth: 0.333
-    }]
+    }*/]
 });

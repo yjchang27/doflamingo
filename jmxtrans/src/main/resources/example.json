@@ -1,6 +1,6 @@
 {
   "servers" : [ {
-    "port" : "1099",
+    "port" : "1100",
     "host" : "127.0.0.1",
     "queries" : [ {
       "outputWriters" : [ {
