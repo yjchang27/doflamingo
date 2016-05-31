@@ -66,7 +66,7 @@ Ext.define('doflamingo.view.main.LineChart', {
             });
         }
         var websocket = Ext.create ('Ext.ux.WebSocket', {
-            url: 'ws://localhost:8080/api/ws' ,
+            url: 'ws://localhost:8080/api/websocket' ,
             listeners: {
                 open: function (ws) {
                     console.log ('The websocket is ready to use');

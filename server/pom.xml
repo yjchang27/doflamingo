@@ -20,6 +20,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <output.encoding>UTF-8</output.encoding>
+        <!-- jmxtrans -->
+        <jmxtrans.version>254</jmxtrans.version>
+        <slf4j.version>1.7.21</slf4j.version>
         <!-- Spring Framework -->
         <spring.version>4.1.9.RELEASE</spring.version>
         <!-- Logging -->
@@ -117,6 +120,31 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.jmxtrans</groupId>
+            <artifactId>jmxtrans-core</artifactId>
+            <version>${jmxtrans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmxtrans</groupId>
+            <artifactId>jmxtrans-output-core</artifactId>
+            <version>${jmxtrans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmxtrans</groupId>
+            <artifactId>jmxtrans-utils</artifactId>
+            <version>${jmxtrans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
@@ -126,6 +154,11 @@
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
         </dependency>
 
     </dependencies>

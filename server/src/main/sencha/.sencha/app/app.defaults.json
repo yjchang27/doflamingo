@@ -220,7 +220,7 @@
      *          },
      *          // Setting the "enable" property of this object to a Truthy value will cause a Application Cache
      *          // manifest file to be generated based on this files appCache object. This file will then be injected
-     *          // into the index.html file of the built application
+     *          // into the websockettest.html file of the built application
      *          "appCache":{
      *              "enable": false"
      *          }

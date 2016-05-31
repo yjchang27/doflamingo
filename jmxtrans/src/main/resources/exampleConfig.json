@@ -1,7 +1,7 @@
 {
   "servers" : [ {
     "port" : "9999",
-    "host" : "192.168.99.100",
+    "host" : "192.168.65.2",
     "queries" : [ {
       "obj" : "kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec,topic=fast-messages",
       "attr" : [ "Count" ],

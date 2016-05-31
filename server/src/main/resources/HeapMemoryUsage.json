@@ -1,0 +1,16 @@
+{
+  "servers" : [ {
+    "host" : "127.0.0.1",
+    "port" : "1098",
+    "queries" : [ {
+      "outputWriters" : [ {
+        "@class" : "com.googlecode.jmxtrans.model.output.StdOutWriter"
+      }, {
+        "@class" : "com.doflamingo.server.WebSocketWriter"
+      }],
+      "obj" : "java.lang:type=Memory",
+      "attr" : [ "HeapMemoryUsage" ]
+    } ],
+    "numQueryThreads" : 2
+  } ]
+}

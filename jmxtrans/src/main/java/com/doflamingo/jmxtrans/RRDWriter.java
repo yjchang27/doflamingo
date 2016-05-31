@@ -86,7 +86,6 @@ public class RRDWriter extends BaseOutputWriter {
 //        checkState(this.templateFile.exists(), "Template file must exist");
     }
 
-    @Override
     public void validateSetup(Server server, Query query) throws ValidationException {}
 
     @Override
