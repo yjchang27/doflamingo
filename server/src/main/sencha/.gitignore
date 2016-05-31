@@ -4,5 +4,7 @@
 ### ExtJs ###
 .architect
 bootstrap.json
+bootstrap.js
+bootstrap.css
 build/
 ext/
