@@ -15,7 +15,7 @@ Ext.define('doflamingo.view.main.MainCharts', {
         xtype: 'heapChart',
         height: 300,
         columnWidth: 0.334
-    }/*, {
+    }, {
         xtype: 'messageConditionChart',
         height: 300,
         columnWidth: 0.334
@@ -35,5 +35,5 @@ Ext.define('doflamingo.view.main.MainCharts', {
         xtype: 'maxLagChart',
         height: 300,
         columnWidth: 0.333
-    }*/]
+    }]
 });

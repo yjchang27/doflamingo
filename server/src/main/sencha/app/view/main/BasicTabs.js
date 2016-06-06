@@ -24,6 +24,18 @@ Ext.define('doflamingo.view.main.BasicTabs', {
     }, {
         title: 'Message Condition',
         xtype: 'messageConditionContainer'
+    }, {
+        title: 'Response Time',
+        xtype: 'responseContainer'
+    }, {
+        title: 'Fetch Rate',
+        xtype: 'fetchRateContainer'
+    }, {
+        title: 'Message Consumed',
+        xtype: 'messageConsumedContainer'
+    }, {
+        title: 'Max Lag',
+        xtype: 'maxLagContainer'
     }],
 
     listeners: {

@@ -3,16 +3,16 @@
  */
 
 
-Ext.define('doflamingo.view.message_condition.MessageCondtionContainer', {
+Ext.define('doflamingo.view.max_lag.MaxLagContainer', {
     extend: 'Ext.Container',
-    xtype: 'messageConditionContainer',
+    xtype: 'maxLagContainer',
     layout: {
         type: 'column',
         columns: 3,
         tdAttrs: { style: 'padding: 20px;'}
     },
     items: [{
-        xtype: 'messageConditionTimeline',
+        xtype: 'maxLagTimeline',
         height: 400,
         columnWidth: 1
     }/*, {

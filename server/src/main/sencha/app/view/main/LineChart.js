@@ -70,6 +70,15 @@ Ext.define('doflamingo.view.main.LineChart', {
             listeners: {
                 open: function (ws) {
                     console.log ('The websocket is ready to use');
+                    d3.select(selector)
+                        .datum(jsons)
+                        .call(chart);
+                    d3.select(selector + " .nv-legendWrap")
+                        .remove();
+                    d3.selectAll(selector + " .nv-bar")
+                        .on('click', function (d) {
+                            me.onChartClick(d);
+                        });
                 } ,
                 close: function (ws) {
                     console.log ('The websocket is closed!');

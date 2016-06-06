@@ -228,6 +228,12 @@
         },{
             "path": "resources/js/nv.d3.min.js",
             "bundle": false
+        },{
+            "path": "resources/js/sockjs.min.js",
+            "bundle": false
+        },{
+            "path": "resources/js/stomp.min.js",
+            "bundle": false
         }
     ],
 

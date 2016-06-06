@@ -3,16 +3,16 @@
  */
 
 
-Ext.define('doflamingo.view.message_condition.MessageCondtionContainer', {
+Ext.define('doflamingo.view.response_time.ResponseContainer', {
     extend: 'Ext.Container',
-    xtype: 'messageConditionContainer',
+    xtype: 'responseContainer',
     layout: {
         type: 'column',
         columns: 3,
         tdAttrs: { style: 'padding: 20px;'}
     },
     items: [{
-        xtype: 'messageConditionTimeline',
+        xtype: 'responseTimeline',
         height: 400,
         columnWidth: 1
     }/*, {

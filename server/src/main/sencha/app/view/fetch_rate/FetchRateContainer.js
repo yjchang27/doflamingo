@@ -3,16 +3,16 @@
  */
 
 
-Ext.define('doflamingo.view.message_condition.MessageCondtionContainer', {
+Ext.define('doflamingo.view.fetch_rate.FetchRateContainer', {
     extend: 'Ext.Container',
-    xtype: 'messageConditionContainer',
+    xtype: 'fetchRateContainer',
     layout: {
         type: 'column',
         columns: 3,
         tdAttrs: { style: 'padding: 20px;'}
     },
     items: [{
-        xtype: 'messageConditionTimeline',
+        xtype: 'fetchRateTimeline',
         height: 400,
         columnWidth: 1
     }/*, {
