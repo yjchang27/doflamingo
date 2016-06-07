@@ -54,7 +54,7 @@ Ext.define('doflamingo.view.main.TimeLineChart', {
 
         chart.xAxis.axisLabel('time (ms)').tickFormat(function(d) { return d3.time.format('%X')(new Date(d)) });
         chart.yAxis.axisLabel('(%)').tickFormat(d3.format(',.2f'));
-        chart.x2Axis.tickFormat(d3.format(',f'));
+        chart.x2Axis.tickFormat(function(d) { return d3.time.format('%X')(new Date(d)) });
         chart.y2Axis.tickFormat(d3.format(',.2f'));
         chart.useInteractiveGuideline(true);
         

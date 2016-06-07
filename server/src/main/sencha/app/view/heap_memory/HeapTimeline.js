@@ -7,5 +7,5 @@ Ext.define('doflamingo.view.heap_memory.HeapTimeline', {
     xtype: 'heapTimeline',
 
     title: 'Heap Memory Usage',
-    event: ['heap']
+    event: ['HeapMemoryUsage']
 });

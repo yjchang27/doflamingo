@@ -7,5 +7,5 @@ Ext.define('doflamingo.view.heap_memory.HeapChart', {
     xtype: 'heapChart',
 
     title: 'Heap Memory Usage',
-    event: ['heap']
+    event: ['HeapMemoryUsage']
 });
