@@ -9,6 +9,8 @@ Code in `jmxtrans` intermittently merged into `server` subproject.
 You can use docker environment to test doflamingo.
 Refer to [doflamingo-runtime](https://github.com/yjchang27/doflamingo-runtime) repository for more detailed information.
 
+If you need a detailed explanation about the project, please take a look at this [Presentation Material](https://github.com/yjchang27/doflamingo/blob/master/docs/13_final_presentation.pdf).
+
 ## doflamingo-jmxtrans
 
 ### Requirements
