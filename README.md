@@ -6,6 +6,9 @@ This project consists of two subprojects: `jmxtrans` and `server`.
 
 Code in `jmxtrans` intermittently merged into `server` subproject.
 
+You can use docker environment to test doflamingo.
+Refer to [doflamingo-runtime](https://github.com/yjchang27/doflamingo-runtime) repository for more detailed information.
+
 ## doflamingo-jmxtrans
 
 ### Requirements
